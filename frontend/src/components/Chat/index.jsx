@@ -137,9 +137,7 @@ export default function Chat() {
                             </ListItemAvatar>
                             <ListItemText
                               primary={element.message}
-                              secondary={`By ${element.sender} at ${
-                                element.createdAt.split("T")[0]
-                              }`}
+                              secondary={`By ${element.sender} at ${element.createdAt}`}
                             />
                           </ListItem>
                         </ListGroup.Item>
