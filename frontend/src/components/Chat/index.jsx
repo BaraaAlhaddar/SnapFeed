@@ -121,6 +121,11 @@ export default function Chat() {
                     {messages.map((element, i) => {
                       return (
                         <ListGroup.Item
+                          variant={
+                            Number(userId) === Number(element.sender_id)
+                              ? `primary`
+                              : ""
+                          }
                           ref={mainRef}
                           key={i}
                           style={{
@@ -137,7 +142,9 @@ export default function Chat() {
                             </ListItemAvatar>
                             <ListItemText
                               primary={element.message}
-                              secondary={`By ${element.sender} at ${element.createdAt}`}
+                              secondary={`By ${element.sender} at ${
+                                element.createdAt.split("T")[0]
+                              }`}
                             />
                           </ListItem>
                         </ListGroup.Item>

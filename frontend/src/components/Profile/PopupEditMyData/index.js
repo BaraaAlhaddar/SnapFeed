@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import "./style.css";
 
 //===============================================================
@@ -14,7 +16,7 @@ import { setUser_first_name } from "../../redux/reducers/auth/index";
 
 const Popup_Edit_Data = (props) => {
   //===============================================================
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //===============================================================
@@ -28,6 +30,7 @@ const Popup_Edit_Data = (props) => {
   });
 
   const user_test = {
+    email: state.dataUser.email,
     first_name: state.dataUser.first_name,
     last_name: state.dataUser.last_name,
     age: state.dataUser.age,
@@ -59,6 +62,7 @@ const Popup_Edit_Data = (props) => {
         dispatch(setUserData(response.data.user));
         dispatch(setUser_first_name(response.data.user));
         props.set(false);
+        document.location.reload();
       })
       .catch(function (error) {
         console.log(error);
@@ -81,7 +85,14 @@ const Popup_Edit_Data = (props) => {
         <form
           onSubmit={(event) => event.preventDefault()}
           className="myProfileAreaEdit"
-        >
+        >    
+        <label htmlFor="email">email:</label>
+          <Form.Control
+          name="email"
+          defaultValue={user_test.email}
+          placeholder="your email"
+          onChange={handleChange}
+          />
           <label htmlFor="first_name">first_name: </label>
           <Form.Control
             defaultValue={user_test.first_name}

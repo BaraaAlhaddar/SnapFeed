@@ -318,7 +318,7 @@ export default function Home() {
                         )
                       }
                       title={post.user_first_name}
-                      subheader={post.created_at.split("T")[0]}
+                      subheader={post.created_at}
                     />
 
                     <Menu
@@ -592,7 +592,18 @@ export default function Home() {
                         </div>
                       </CardContent>
                     </Collapse>
-                    <Popup_Add_New_Post
+                  </Card>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <h1 style={{ marginTop: "200px" }}>No Posts Yet</h1>
+            </>
+          )}
+        </Container>
+      </div>
+      <Popup_Add_New_Post
                       set={setModalShowPopupAddNewPost}
                       show={modalShowPopupAddNewPost}
                       onHide={() => setModalShowPopupAddNewPost(false)}
@@ -605,17 +616,6 @@ export default function Home() {
                         <ListGroup>{tagsFunction()}</ListGroup>
                       </Offcanvas.Body>
                     </Offcanvas>
-                  </Card>
-                );
-              })}
-            </>
-          ) : (
-            <>
-              <h1 style={{ marginTop: "200px" }}>No Posts Yet</h1>
-            </>
-          )}
-        </Container>
-      </div>
     </div>
   );
 }

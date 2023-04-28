@@ -100,7 +100,7 @@ const Post = () => {
   const [status, setStatus] = useState(false);
   const [modalShowEditPopupPostUpdate, setModalShowEditPopupPostUpdate] =
     useState(false);
-
+  console.log(post);
   //===============================================================
 
   const [show, setShow] = useState(false);
@@ -150,7 +150,6 @@ const Post = () => {
       return e.posts_id === id;
     });
   };
-
   //===============================================================
   const deletePost = async (id) => {
     try {
@@ -258,7 +257,7 @@ const Post = () => {
                   </IconButton>
                 )
               }
-              title={post[0].user_first_name}
+              title={post[0].first_name}
               subheader={post[0].created_at}
             />
 
@@ -364,7 +363,8 @@ const Post = () => {
                   >
                     <FavoriteIcon />
                   </IconButton>
-                  <p style={{ margin: "10px" }}>{post[0].likes_count}</p>
+                  {console.log(post.likes_count)}
+                  <p style={{ margin: "10px" }}>{post.likes_count}</p>
                 </div>
               )}
 
