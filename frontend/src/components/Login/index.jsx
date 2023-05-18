@@ -29,11 +29,12 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   //===============================================================
 
   const login = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const result = await axios.post(
         `${process.env.REACT_APP_BACKEND}/users/login`,
@@ -56,6 +57,8 @@ const Login = () => {
       }
       setStatus(true);
       setMessage("Error happened while Login, please try again");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,6 +113,7 @@ const Login = () => {
               </Form.Group>
               {status && <Alert variant="danger">{message}</Alert>}
               <Button
+                disabled={loading}
                 type="submit"
                 onClick={(e) => {
                   login(e);
