@@ -25,9 +25,9 @@ const Login = () => {
     };
   });
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("baraa@gmail.com");
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("12345678");
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   //===============================================================
@@ -97,6 +97,7 @@ const Login = () => {
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
+                  defaultValue={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <Form.Text className="text-muted">
@@ -108,6 +109,7 @@ const Login = () => {
                 <Form.Control
                   type="password"
                   placeholder="Password"
+                  defaultValue={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
